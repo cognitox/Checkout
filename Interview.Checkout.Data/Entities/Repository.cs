@@ -25,6 +25,16 @@ namespace Interview.Checkout.Data.Entities
             return _dbContext.Set<T>();
         }
 
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().Where(predicate);
+        }
+        public T Single(Expression<Func<T, bool>> predicate)
+        {
+            return _dbContext.Set<T>().Single();
+        }
+
+       
         public void Add(T entity)
         {
             _dbContext.Set<T>().Add(entity);

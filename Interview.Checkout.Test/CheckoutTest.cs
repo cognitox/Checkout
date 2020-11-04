@@ -28,10 +28,16 @@ namespace Interview.Checkout.Test
         }
 
         [Fact]
-        public void No_items_returns_zero()
+        public void Scanned_One_Product_Single_Returns_True()
         {
             checkout.Scan("A99");
-            Assert.Single(checkout.ScannedProducts);
+            Assert.Single(checkout.ShoppingCart);
+        }
+
+        [Fact]
+        public void No_items_returns_zero()
+        {
+            Assert.Equal(0, checkout.Total());
         }
     }
 }
