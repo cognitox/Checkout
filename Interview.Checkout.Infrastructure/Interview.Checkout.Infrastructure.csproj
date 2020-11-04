@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8DD4BEB-2545-4AC1-A55E-6EBF38B7EBAF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Interview.Checkout</RootNamespace>
-    <AssemblyName>Interview.Checkout</AssemblyName>
+    <ProjectGuid>{A350A571-8511-4B20-B374-788C24DCC905}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Interview.Checkout.Infrastructure</RootNamespace>
+    <AssemblyName>Interview.Checkout.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,22 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShopCheckout.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Entities\Discount.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Interfaces\IDiscount.cs" />
+    <Compile Include="Interfaces\IProduct.cs" />
+    <Compile Include="Interfaces\IShopCheckout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Interview.Checkout.Data\Interview.Checkout.Data.csproj">
-      <Project>{9B9C57D7-D779-4DAC-8506-969DE7503017}</Project>
-      <Name>Interview.Checkout.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interview.Checkout.Infrastructure\Interview.Checkout.Infrastructure.csproj">
-      <Project>{A350A571-8511-4B20-B374-788C24DCC905}</Project>
-      <Name>Interview.Checkout.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
