@@ -26,6 +26,7 @@ namespace Interview.Checkout
                 if (_catalog.Any(product => product.SKU == sku))
                 {
                     ShoppingCart.Add(sku);
+                    Console.WriteLine($"Scanned product {sku}");
                 }                                    
             }
             return this;
