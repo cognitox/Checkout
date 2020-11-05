@@ -19,11 +19,21 @@ namespace Interview.Checkout.Data
             _data = new List<T>();
         }
 
-        public IQueryable<T> GetAll => _data.AsQueryable();
+        public IQueryable<T> GetAll() => _data.AsQueryable();
+
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
+        {
+            return _data.AsQueryable().Where(predicate);
+        }
 
         public bool Any(Expression<Func<T, bool>> predicate)
         {
             return _data.AsQueryable().Any<T>(predicate);
+        }
+
+        public T Single(Expression<Func<T, bool>> predicate)
+        {
+            return _data.AsQueryable().Single<T>(predicate);
         }
         public override T Add(T item)
         {

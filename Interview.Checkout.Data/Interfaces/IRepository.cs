@@ -13,5 +13,7 @@ namespace Interview.Checkout.Data.Interfaces
 
         bool Any(Expression<Func<T, bool>> predicate);
         T Single(Expression<Func<T, bool>> predicate);
+
+        IQueryable<T> GetAll(Expression<Func<T, bool>> predicate);
     }
 }

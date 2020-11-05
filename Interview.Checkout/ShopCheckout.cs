@@ -37,7 +37,9 @@ namespace Interview.Checkout
         /// <returns></returns>
         public decimal Total()
         {
-            return ShoppingCart.Sum(sku => PriceFor(sku));
+            decimal total = 0;
+            total = ShoppingCart.GroupBy(sku => sku).Sum(g => GetDiscountedTotal(g.Key, g.Count()));
+            return total;
         }
         /// <summary>
         /// Get Price for Product
@@ -47,6 +49,27 @@ namespace Interview.Checkout
         private decimal PriceFor(string sku)
         {
             return _catalog.Single(p => p.SKU == sku).Price;
-        }        
+        }
+
+        private decimal CalculateDiscount(List<string> cart)
+        {
+            var sum = cart.GroupBy(sku => sku).Sum(g=> GetDiscountedTotal(g.Key, g.Count()));
+            return sum;
+        }
+
+        private decimal GetDiscountedTotal(string sku, int count)
+        {
+            decimal total = 0;
+
+            var discount = _discounts.GetAll(d => d.SKU == sku).FirstOrDefault();
+            if (discount == null)
+            {
+                return count * PriceFor(sku);
+            }
+            var offerAppliedItemsTotal = (count / discount.Quantity) * discount.Value;
+            var offerNotAppliedItemsTotal = (count % discount.Quantity) * PriceFor(sku);
+            total = offerAppliedItemsTotal + offerNotAppliedItemsTotal;
+            return total;
+        }
     }
 }

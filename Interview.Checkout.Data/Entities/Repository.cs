@@ -22,16 +22,16 @@ namespace Interview.Checkout.Data.Entities
 
         public IQueryable<T> GetAll()
         {
-            return _dbContext.Set<T>();
+            return _dbContext.Set<T>().GetAll();
         }
 
         public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
         {
-            return _dbContext.Set<T>().Where(predicate);
+            return _dbContext.Set<T>().GetAll(predicate);
         }
         public T Single(Expression<Func<T, bool>> predicate)
         {
-            return _dbContext.Set<T>().Single();
+            return _dbContext.Set<T>().Single(predicate);
         }
 
        
