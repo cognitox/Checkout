@@ -53,6 +53,12 @@ namespace Interview.Checkout.Test
         }
 
         [Fact]
+        public void Scan_One_Product_With_No_Offer_Expect_Correct_Price()
+        {
+            checkout.Scan("C40");
+            Assert.Equal(.60m, checkout.Total());
+        }
+        [Fact]
         public void Scan_Combination_Of_Discounted_And_NonDiscounted_Item_And_Expect_Correct_Price()
         {
             checkout.Scan("A99");

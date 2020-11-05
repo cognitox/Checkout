@@ -51,7 +51,12 @@ namespace Interview.Checkout
             return _catalog.Single(p => p.SKU == sku).Price;
         }
               
-
+        /// <summary>
+        /// Get Total Price for all product of same type with discount applied
+        /// </summary>
+        /// <param name="sku"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         private decimal GetDiscountedTotal(string sku, int count)
         {
             decimal total = 0;
