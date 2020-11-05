@@ -50,12 +50,7 @@ namespace Interview.Checkout
         {
             return _catalog.Single(p => p.SKU == sku).Price;
         }
-
-        private decimal CalculateDiscount(List<string> cart)
-        {
-            var sum = cart.GroupBy(sku => sku).Sum(g=> GetDiscountedTotal(g.Key, g.Count()));
-            return sum;
-        }
+              
 
         private decimal GetDiscountedTotal(string sku, int count)
         {
